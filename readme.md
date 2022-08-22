@@ -23,13 +23,21 @@ see:
 * src/WisePokemon/Infrastructure/Security/ApiKeyAuthenticator.php
 
 ### Messages
-Symfony messenger is used for all read & write operations
+Symfony messenger is used for all read & write operations.
+
+Why:
+* middleware can easily be added (validation, xss, audting, ...)
+* async sync switching
+* clear overiew of all application operations
+* all operations can be developed/tested in a uniform way
 
 ![img.png](doc/img/message_listing.png)
 
 ### Commands
-* load pokemons from json file
-* load single pokemon from api (id or name)
+* load pokemons from json file 
+  * ``symfony console pokemons:import:file``
+* load single pokemon from api (id or name) 
+  * ``symfony console pokemon:import:api pikachu``
 
 ![img.png](doc/img/commands.png)
 
