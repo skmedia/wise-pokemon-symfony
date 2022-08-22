@@ -9,7 +9,7 @@ use App\WisePokemon\Domain\Team\Team;
 use App\WisePokemon\Domain\Team\TeamId;
 use App\WisePokemon\Domain\Team\TeamRepository;
 use App\WisePokemon\Messages\Write\Team\AssignPokemonsToTeam\AssignPokemonsToTeam;
-use Symfony\Component\Messenger\Exception\HandlerFailedException;
+use Symfony\Component\Messenger\Exception\ValidationFailedException;
 
 class AssignPokemonsToTeamTest extends DatabaseTestCase
 {
@@ -41,7 +41,7 @@ class AssignPokemonsToTeamTest extends DatabaseTestCase
      */
     public function it_should_throw_an_error_when_the_team_does_not_exist()
     {
-        $this->expectException(HandlerFailedException::class);
+        $this->expectException(ValidationFailedException::class);
 
         $this->databaseTool->loadFixtures(
             [

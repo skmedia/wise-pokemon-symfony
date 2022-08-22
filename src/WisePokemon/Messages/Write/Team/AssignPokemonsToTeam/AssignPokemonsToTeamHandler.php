@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\WisePokemon\Messages\Write\Team\AssignPokemonsToTeam;
 
-use App\WisePokemon\Domain\Pokemon\PokemonId;
 use App\WisePokemon\Domain\Pokemon\PokemonRepository;
 use App\WisePokemon\Domain\Team\TeamRepository;
 
@@ -21,7 +20,7 @@ class AssignPokemonsToTeamHandler
         $team = $this->teamRepository->getOneById($message->getId());
 
         $pokemons = array_map(
-            fn (PokemonId $pokemonId) => $this->pokemonRepository->getOneById($pokemonId),
+            fn (PokemonIdInput $pokemonIdInput) => $this->pokemonRepository->getOneById($pokemonIdInput->getId()),
             $message->getPokemons()
         );
 

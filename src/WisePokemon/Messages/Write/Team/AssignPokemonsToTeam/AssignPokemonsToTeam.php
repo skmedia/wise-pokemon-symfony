@@ -4,19 +4,27 @@ declare(strict_types=1);
 
 namespace App\WisePokemon\Messages\Write\Team\AssignPokemonsToTeam;
 
-use App\WisePokemon\Domain\Pokemon\PokemonId;
+use App\WisePokemon\Domain\Team\Team;
 use App\WisePokemon\Domain\Team\TeamId;
 use App\WisePokemon\Infrastructure\Message\Message;
 use Symfony\Component\Validator\Constraints as Assert;
+use App\WisePokemon\Infrastructure\Validation as AppAssert;
 
 class AssignPokemonsToTeam implements Message
 {
+    #[Assert\Valid]
+    private readonly array $pokemonIds;
+
     public function __construct(
+        #[AppAssert\EntityExists(entityClass: Team::class, message: "Team does not exist")]
         #[Assert\NotBlank(message: "id is required")]
         private readonly string $id,
-        #[Assert\Valid]
         private readonly array $pokemons,
     ) {
+        $this->pokemonIds = array_map(
+            static fn (string $id) => new PokemonIdInput($id),
+            $this->pokemons
+        );
     }
 
     public function getId(): TeamId
@@ -25,10 +33,10 @@ class AssignPokemonsToTeam implements Message
     }
 
     /**
-     * @return PokemonId[]
+     * @return PokemonIdInput[]
      */
     public function getPokemons(): array
     {
-        return array_map(static fn (string $id) => PokemonId::fromString($id), $this->pokemons);
+        return $this->pokemonIds;
     }
 }
