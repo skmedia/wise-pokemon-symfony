@@ -1,7 +1,16 @@
 framework:
     messenger:
         failure_transport: failed
-
+        default_bus: write.bus
+        reset_on_message: true
+        buses:
+            read.bus:
+                middleware:
+                    - validation
+            write.bus:
+                middleware:
+                    - validation
+                    - doctrine_transaction
         transports:
             # https://symfony.com/doc/current/messenger.html#transport-configuration
             async:

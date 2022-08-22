@@ -10,15 +10,41 @@ services:
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+        bind:
+            $importDataDir: '%kernel.project_dir%/data'
+            $appEnv: '%kernel.environment%'
 
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
     App\:
         resource: '../src/'
         exclude:
-            - '../src/DependencyInjection/'
-            - '../src/Entity/'
             - '../src/Kernel.php'
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    App\WisePokemon\Domain\:
+        resource: '%kernel.project_dir%/src/WisePokemon/Domain/*'
+
+    App\WisePokemon\Infrastructure\EventListener\:
+        resource: '%kernel.project_dir%/src/WisePokemon/Infrastructure/EventListener/*'
+        tags: [ kernel.event_listener ]
+
+    App\WisePokemon\Infrastructure\Controller\:
+        resource: '%kernel.project_dir%/src/WisePokemon/Infrastructure/Controller'
+        tags: [ 'controller.service_arguments' ]
+
+    wise_pokemon_write_messages:
+        namespace: App\WisePokemon\Messages\Write\
+        resource: '%kernel.project_dir%/src/WisePokemon/Messages/Write/**/*Handler.php'
+        autoconfigure: true
+        tags:
+            - { name: messenger.message_handler, bus: write.bus }
+
+    wise_pokemon_read_messages:
+        namespace: App\WisePokemon\Messages\Read\
+        resource: '%kernel.project_dir%/src/WisePokemon/Messages/Read/**/*Handler.php'
+        autoconfigure: true
+        tags:
+            - { name: messenger.message_handler, bus: read.bus }

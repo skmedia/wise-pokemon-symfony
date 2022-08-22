@@ -1,6 +1,19 @@
 doctrine:
     dbal:
         url: '%env(resolve:DATABASE_URL)%'
+        default_table_options:
+            charset: utf8
+            collate: utf8_unicode_ci
+        types:
+            pokemon_id: \App\WisePokemon\Infrastructure\Persistence\Doctrine\Type\Pokemon\PokemonIdType
+            pokemon_import_id: \App\WisePokemon\Infrastructure\Persistence\Doctrine\Type\Pokemon\PokemonImportIdType
+            pokemon_name: \App\WisePokemon\Infrastructure\Persistence\Doctrine\Type\Pokemon\PokemonNameType
+            pokemon_type: \App\WisePokemon\Infrastructure\Persistence\Doctrine\Type\Pokemon\PokemonTypeType
+            team_id: \App\WisePokemon\Infrastructure\Persistence\Doctrine\Type\Team\TeamIdType
+            team_name: \App\WisePokemon\Infrastructure\Persistence\Doctrine\Type\Team\TeamNameType
+            user_id: \App\WisePokemon\Infrastructure\Persistence\Doctrine\Type\User\UserIdType
+            email: \App\WisePokemon\Infrastructure\Persistence\Doctrine\Type\EmailType
+            user_name: \App\WisePokemon\Infrastructure\Persistence\Doctrine\Type\User\UserNameType
 
         # IMPORTANT: You MUST configure your server version,
         # either here or in the DATABASE_URL env var (see .env file)
@@ -10,11 +23,12 @@ doctrine:
         naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
         auto_mapping: true
         mappings:
-            App:
+            WisePokemon:
                 is_bundle: false
-                dir: '%kernel.project_dir%/src/Entity'
-                prefix: 'App\Entity'
-                alias: App
+                type: xml
+                dir: "%kernel.project_dir%/config/doctrine/wise_pokemon"
+                prefix: 'App\WisePokemon\Domain'
+                alias: WisePokemon
 
 when@test:
     doctrine:

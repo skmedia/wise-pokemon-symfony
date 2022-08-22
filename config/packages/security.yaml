@@ -6,10 +6,19 @@ security:
     # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
     providers:
         users_in_memory: { memory: null }
+        api_tokens:
+            memory:
+                users:
+                    token: null
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
+        secure_api:
+            pattern: ^/api/v1/teams/*
+            provider: api_tokens
+            custom_authenticators:
+                - App\WisePokemon\Infrastructure\Security\ApiKeyAuthenticator
         main:
             lazy: true
             provider: users_in_memory

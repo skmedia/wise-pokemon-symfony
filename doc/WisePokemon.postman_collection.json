@@ -1,0 +1,259 @@
+{
+	"info": {
+		"_postman_id": "cacb945f-f0b3-4e7d-8abf-650391ee8c98",
+		"name": "WisePokemon",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "266480"
+	},
+	"item": [
+		{
+			"name": "Teams",
+			"item": [
+				{
+					"name": "Teams / list all teams",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://wise-pokemon.test/api/v1/teams",
+							"protocol": "https",
+							"host": [
+								"wise-pokemon",
+								"test"
+							],
+							"path": [
+								"api",
+								"v1",
+								"teams"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Teams / single detail",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://wise-pokemon.test/api/v1/teams/TeamId-1",
+							"protocol": "https",
+							"host": [
+								"wise-pokemon",
+								"test"
+							],
+							"path": [
+								"api",
+								"v1",
+								"teams",
+								"TeamId-1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Teams / add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"TeamId-1\",\n    \"name\": \"team 1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://wise-pokemon.test/api/v1/teams",
+							"protocol": "https",
+							"host": [
+								"wise-pokemon",
+								"test"
+							],
+							"path": [
+								"api",
+								"v1",
+								"teams"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Teams / assign pokemons",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"pokemons\": [\"PokemonId-1\", \"PokemonId-2\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://wise-pokemon.test/api/v1/teams/TeamId-1",
+							"protocol": "https",
+							"host": [
+								"wise-pokemon",
+								"test"
+							],
+							"path": [
+								"api",
+								"v1",
+								"teams",
+								"TeamId-1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pokemons",
+			"item": [
+				{
+					"name": "Pokemons / list - v1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://wise-pokemon.test/api/v1/pokemons?sort=name-asc",
+							"protocol": "https",
+							"host": [
+								"wise-pokemon",
+								"test"
+							],
+							"path": [
+								"api",
+								"v1",
+								"pokemons"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "name-asc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pokemons / listing - v2",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://wise-pokemon.test/api/v2/pokemons?sort=name-asc&limit=100&offset=100",
+							"protocol": "https",
+							"host": [
+								"wise-pokemon",
+								"test"
+							],
+							"path": [
+								"api",
+								"v2",
+								"pokemons"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "name-asc"
+								},
+								{
+									"key": "limit",
+									"value": "100"
+								},
+								{
+									"key": "offset",
+									"value": "100"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pokemons / search",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://wise-pokemon.test/api/v1/search?query=flying&limit=1",
+							"protocol": "https",
+							"host": [
+								"wise-pokemon",
+								"test"
+							],
+							"path": [
+								"api",
+								"v1",
+								"search"
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "flying"
+								},
+								{
+									"key": "limit",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pokemons / single detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://wise-pokemon.test/api/v1/pokemons/PokemonId-1",
+							"protocol": "https",
+							"host": [
+								"wise-pokemon",
+								"test"
+							],
+							"path": [
+								"api",
+								"v1",
+								"pokemons",
+								"PokemonId-1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
