@@ -10,6 +10,88 @@
 			"name": "Teams",
 			"item": [
 				{
+					"name": "Teams / add",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"TeamId-3\",\n    \"name\": \"team 5\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/teams",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"teams"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Teams / assign pokemons",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"pokemons\": [\"PokemonId-1\", \"PokemonId-2\", \"PokemonId-6\", \"PokemonId-6\", \"PokemonId-7\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/teams/TeamId-8",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"teams",
+								"TeamId-8"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pokemons",
+			"item": [
+				{
 					"name": "Teams / list all teams",
 					"request": {
 						"auth": {
@@ -25,11 +107,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://wise-pokemon.test/api/v1/teams",
-							"protocol": "https",
+							"raw": "{{host}}/api/v1/teams",
 							"host": [
-								"wise-pokemon",
-								"test"
+								"{{host}}"
 							],
 							"path": [
 								"api",
@@ -56,11 +136,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://wise-pokemon.test/api/v1/teams/TeamId-1",
-							"protocol": "https",
+							"raw": "{{host}}/api/v1/teams/TeamId-1",
 							"host": [
-								"wise-pokemon",
-								"test"
+								"{{host}}"
 							],
 							"path": [
 								"api",
@@ -72,83 +150,15 @@
 					},
 					"response": []
 				},
-				{
-					"name": "Teams / add",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"id\": \"TeamId-1\",\n    \"name\": \"team 1\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "https://wise-pokemon.test/api/v1/teams",
-							"protocol": "https",
-							"host": [
-								"wise-pokemon",
-								"test"
-							],
-							"path": [
-								"api",
-								"v1",
-								"teams"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Teams / assign pokemons",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"pokemons\": [\"PokemonId-1\", \"PokemonId-2\"]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "https://wise-pokemon.test/api/v1/teams/TeamId-1",
-							"protocol": "https",
-							"host": [
-								"wise-pokemon",
-								"test"
-							],
-							"path": [
-								"api",
-								"v1",
-								"teams",
-								"TeamId-1"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Pokemons",
-			"item": [
 				{
 					"name": "Pokemons / list - v1",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://wise-pokemon.test/api/v1/pokemons?sort=name-asc",
-							"protocol": "https",
+							"raw": "{{host}}/api/v1/pokemons?sort=name-asc",
 							"host": [
-								"wise-pokemon",
-								"test"
+								"{{host}}"
 							],
 							"path": [
 								"api",
@@ -171,11 +181,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://wise-pokemon.test/api/v2/pokemons?sort=name-asc&limit=100&offset=100",
-							"protocol": "https",
+							"raw": "{{host}}/api/v2/pokemons?sort=name-asc&limit=100&offset=100",
 							"host": [
-								"wise-pokemon",
-								"test"
+								"{{host}}"
 							],
 							"path": [
 								"api",
@@ -206,11 +214,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://wise-pokemon.test/api/v1/search?query=flying&limit=1",
-							"protocol": "https",
+							"raw": "{{host}}/api/v1/search?query=flying&limit=1",
 							"host": [
-								"wise-pokemon",
-								"test"
+								"{{host}}"
 							],
 							"path": [
 								"api",
@@ -237,11 +243,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://wise-pokemon.test/api/v1/pokemons/PokemonId-1",
-							"protocol": "https",
+							"raw": "{{host}}/api/v1/pokemons/PokemonId-1",
 							"host": [
-								"wise-pokemon",
-								"test"
+								"{{host}}"
 							],
 							"path": [
 								"api",
@@ -254,6 +258,33 @@
 					"response": []
 				}
 			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "https://wise-pokemon.herokuapp.com",
+			"type": "string"
 		}
 	]
 }

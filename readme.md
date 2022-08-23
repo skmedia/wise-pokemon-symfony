@@ -7,9 +7,17 @@ https://symfony.com/doc/current/setup/symfony_server.html
 symfony proxy:domain:attach wise-pokemon
 ```
 
-### Todo
+### Todo / remarks
 * map all pokemon properties (currently only id, name, types, ...)
 * advanced types search
+* importId added to pokemon, id = string
+
+### Demo env
+
+`https://wise-pokemon.herokuapp.com`
+
+E.g.
+https://wise-pokemon.herokuapp.com/api/v1/pokemons?sort=name-asc
 
 ### API routes
 
