@@ -38,6 +38,8 @@ when@test:
 
 when@prod:
     doctrine:
+        dbal:
+            url: '%env(resolve:JAWSDB_MARIA_URL)%'
         orm:
             auto_generate_proxy_classes: false
             query_cache_driver:
