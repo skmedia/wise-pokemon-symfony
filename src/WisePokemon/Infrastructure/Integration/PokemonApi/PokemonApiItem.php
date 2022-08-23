@@ -7,9 +7,9 @@ namespace App\WisePokemon\Infrastructure\Integration\PokemonApi;
 class PokemonApiItem
 {
     public function __construct(
-        private int $id,
-        private string $name,
-        private array $types,
+        private readonly int $id,
+        private readonly string $name,
+        private readonly array $types,
     ) {
     }
 

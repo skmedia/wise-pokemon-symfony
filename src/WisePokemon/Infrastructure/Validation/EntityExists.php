@@ -29,6 +29,7 @@ class EntityExists extends Constraint
     ) {
         $this->message = $message;
         $this->entityClass = $entityClass;
+
         parent::__construct($options, $groups, $payload);
     }
 

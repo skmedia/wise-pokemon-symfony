@@ -76,8 +76,15 @@ class UniqueValueInEntityValidator extends ConstraintValidator
         }
 
         if ($foundEntity) {
+            if ($constraint->field === 'id') {
+                $this->context
+                    ->buildViolation($constraint->message)
+                    ->addViolation();
+            }
+
             if ((string)$foundEntity->getId() !== (string)$value->{$constraint->idGetter}()) {
-                $this->context->buildViolation($constraint->message)
+                $this->context
+                    ->buildViolation($constraint->message)
                     ->addViolation();
             }
         }

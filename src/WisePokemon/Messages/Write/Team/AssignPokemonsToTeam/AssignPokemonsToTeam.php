@@ -13,6 +13,7 @@ use App\WisePokemon\Infrastructure\Validation as AppAssert;
 class AssignPokemonsToTeam implements Message
 {
     #[Assert\Valid]
+    #[Assert\Count(max: 6, maxMessage: "max 6 pokemons allowed in team")]
     private readonly array $pokemonIds;
 
     public function __construct(

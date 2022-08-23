@@ -9,8 +9,9 @@ use Symfony\Component\Validator\Constraint;
 /**
  * @psalm-suppress PropertyNotSetInConstructor
  * @Annotation
- * @Target({"CLASS", "ANNOTATION"})
+ * @Target({"CLASS", "ANNOTATION", "ATTRIBUTE"})
  */
+#[\Attribute(\Attribute::TARGET_CLASS|\Attribute::IS_REPEATABLE)]
 class UniqueValueInEntity extends Constraint
 {
     public string $message = 'This value is already used.';
@@ -20,9 +21,21 @@ class UniqueValueInEntity extends Constraint
     public mixed $field;
     public string $idGetter = 'getId';
 
-    public function getRequiredOptions(): array
-    {
-        return ['entityClass', 'field'];
+    public function __construct(
+        mixed $entityClass,
+        mixed $field,
+        string $message = 'The entity was not found',
+        string $idGetter = 'getId',
+        mixed $options = null,
+        array $groups = null,
+        mixed $payload = null
+    ) {
+        $this->entityClass = $entityClass;
+        $this->field = $field;
+        $this->message = $message;
+        $this->idGetter = $idGetter;
+
+        parent::__construct($options, $groups, $payload);
     }
 
     public function getTargets(): string|array

@@ -3,19 +3,34 @@
 Setup, see symfony server:
 https://symfony.com/doc/current/setup/symfony_server.html
 
+```
+symfony proxy:domain:attach wise-pokemon
+```
+
 ### Todo
-* add unique checks (create team)
-* create open api spec
+* map all pokemon properties (currently only id, name, types, ...)
+* advanced types search
 
 ### API routes
+
+see folder `src/WisePokemon/Infrastructure/Controller/Api/`
+
+![img.png](doc/img/controllers.png)
 
 ![img.png](doc/img/routes.png)
 
 ### Security
 
 Protected route:
+
 ```
 ^/api/v1/teams/*
+```
+
+e.g.
+```
+curl --location --request GET 'https://wise-pokemon.test/api/v1/teams' \
+--header 'Authorization: Bearer token'
 ```
 
 see:
@@ -25,7 +40,6 @@ see:
 ### Messages
 Symfony messenger is used for all read & write operations.
 
-Why:
 * middleware can easily be added (validation, xss, audting, ...)
 * async sync switching
 * clear overiew of all application operations
