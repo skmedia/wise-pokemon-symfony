@@ -28,14 +28,14 @@ class MetadataFactory
             ...$params,
             'offset' => $nextOffset,
             'limit' => $limit,
-        ]);
+        ], UrlGeneratorInterface::ABSOLUTE_URL);
 
         $previousOffset = max($offset - $limit, 0);
         $previous = $this->urlGenerator->generate($route, [
             ...$params,
             'offset' => $previousOffset,
             'limit' => $limit,
-        ]);
+        ], UrlGeneratorInterface::ABSOLUTE_URL);
 
         return new Metadata(
             $next,
