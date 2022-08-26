@@ -13,7 +13,7 @@ class UpdatePokemonHandler
     ) {
     }
 
-    public function __invoke(UpdatePokemon $message)
+    public function __invoke(UpdatePokemon $message): void
     {
         $pokemon = $this->pokemonRepository->getOneById($message->getId());
         $pokemon->update($message->getName(), $message->getTypes());

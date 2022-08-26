@@ -47,7 +47,6 @@ class ImportPokemonsFromFileHandler implements MessageHandlerInterface
                 $pokemonToImport->getId(),
                 $pokemonToImport->getName(),
                 $pokemonToImport->getTypes(),
-                // todo, add more props ...
             ));
 
             if ((++$i % $batchSize) === 0) {

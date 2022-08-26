@@ -15,6 +15,8 @@ class PokemonApiItem
 
     public static function create(array $item): self
     {
+        // @todo map other fields ...
+
         $types = array_map(static fn (array $type): string => $type['type']['name'], $item['types']);
 
         return new self(

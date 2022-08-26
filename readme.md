@@ -7,14 +7,17 @@ https://symfony.com/doc/current/setup/symfony_server.html
 symfony proxy:domain:attach wise-pokemon
 ```
 
-### Todo / remarks
-* map all pokemon properties (currently only id, name, types, ...)
-* advanced types search
-* importId added to pokemon, id = string
+### Todo / remarks / extra things todo
+* not all pokemon properties are mapped (currently only id, name, types, ...)
+* advanced types search, currently: simple like query
+* importId added to pokemon, id = string, importId = int from service
+* add openapi docs to controllers -> auto generation of openapi yaml file
 
 ### Demo env
 
 `https://wise-pokemon.herokuapp.com`
+
+see `doc/WisePokemon.postman_collection.json` for postman collection
 
 E.g.
 https://wise-pokemon.herokuapp.com/api/v1/pokemons?sort=name-asc
@@ -26,6 +29,7 @@ see folder `src/WisePokemon/Infrastructure/Controller/Api/`
 ![img.png](doc/img/controllers.png)
 
 ![img.png](doc/img/routes.png)
+
 
 ### Security
 
@@ -66,16 +70,21 @@ Symfony messenger is used for all read & write operations.
 ### Code quality
 
 #### Static analysis & auto fix
-See Makefile:
+
+Packages used:
 * php-cs-fixer
 * psalm
 
+See Makefile command:
 ```
 make code_check
 ```
 
 #### Run tests
 
+Not all code is fully tested, see `tests` folder.
+
+See Makefile command:
 ```
 make run_tests_stop_on_error_failure
 ```

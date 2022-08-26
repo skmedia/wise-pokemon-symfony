@@ -24,6 +24,7 @@ class SearchPokemonsHandler implements MessageHandlerInterface
             ->andWhere('pokemon.name like :query')
             ->orWhere('pokemon.types like :query')
             ->setParameter('query', '%'.$message->getQuery().'%')
+            ->setMaxResults($message->getLimit())
         ;
 
         return \array_map(

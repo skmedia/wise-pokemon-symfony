@@ -10,6 +10,65 @@
 			"name": "Teams",
 			"item": [
 				{
+					"name": "Teams / list all teams",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/v1/teams",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"teams"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Teams / single detail",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/v1/teams/TeamId-1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"teams",
+								"TeamId-1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Teams / add",
 					"request": {
 						"auth": {
@@ -91,65 +150,6 @@
 		{
 			"name": "Pokemons",
 			"item": [
-				{
-					"name": "Teams / list all teams",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "token",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{host}}/api/v1/teams",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"teams"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Teams / single detail",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "token",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{host}}/api/v1/teams/TeamId-1",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"teams",
-								"TeamId-1"
-							]
-						}
-					},
-					"response": []
-				},
 				{
 					"name": "Pokemons / list - v1",
 					"request": {
